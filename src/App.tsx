@@ -253,16 +253,25 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
           className="relative flex justify-center"
         >
-          <div className="relative w-72 h-72 md:w-96 md:h-96">
-            <div className="absolute inset-0 bg-teal-500 rounded-lg rotate-6 opacity-20 animate-pulse"></div>
-            <div className="absolute inset-0 bg-slate-900 dark:bg-white rounded-lg -rotate-3 opacity-5"></div>
+          <motion.div 
+            animate={{ y: [0, -15, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            className="relative w-64 h-64 md:w-80 md:h-80 group"
+          >
+            {/* Animated Glow Background */}
+            <div className="absolute -inset-4 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full blur-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+            
             <img 
-              src="https://i.postimg.cc/0NJMvpWV/Gemini-Generated-Image-3vos303vos303vos.png" 
+              src="https://i.postimg.cc/HWMNpzXG/Gemini-Generated-Image-p5gp37p5gp37p5gp.png" 
               alt="Tanshika J S" 
-              className="relative w-full h-full object-cover rounded-lg shadow-2xl transition-all duration-500"
+              className="relative w-full h-full object-contain rounded-3xl transition-all duration-500 group-hover:scale-105 group-hover:rotate-2 shadow-xl group-hover:shadow-teal-500/20"
               referrerPolicy="no-referrer"
             />
-          </div>
+            
+            {/* Corner Accents */}
+            <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-teal-500 rounded-tl-xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+            <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-teal-500 rounded-br-xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+          </motion.div>
           {/* Floating badges */}
           <motion.div 
             animate={{ y: [0, -10, 0] }}
