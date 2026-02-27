@@ -62,21 +62,21 @@ const PROJECTS: Project[] = [
     title: 'Musify',
     description: 'A responsive web-based music streaming application with reusable React components and Firebase integration.',
     tech: ['HTML', 'CSS', 'React JS', 'Firebase'],
-    image: 'https://picsum.photos/seed/musify/800/600',
+    image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=800&h=600',
   },
   {
     id: 'smartqcare',
     title: 'SMARTQCARE',
     description: 'Real-time healthcare queue management system with an integrated chatbot for patient updates and improved waiting-time handling.',
     tech: ['React JS', 'JavaScript', 'MySQL', 'Chatbot'],
-    image: 'https://picsum.photos/seed/smartq/800/600',
+    image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800&h=600',
   },
   {
     id: 'sliding-puzzle',
     title: 'Sliding Puzzle',
     description: 'A Flutter-based brain game featuring multiple difficulty levels, move tracking, and smooth offline gameplay.',
     tech: ['Flutter', 'Dart'],
-    image: 'https://picsum.photos/seed/puzzle/800/600',
+    image: 'https://images.unsplash.com/photo-1586136194012-35ceaddaf769?auto=format&fit=crop&q=80&w=800&h=600',
   }
 ];
 
@@ -119,7 +119,7 @@ const SKILLS: Skill[] = [
 
 // --- Components ---
 
-const Navbar = ({ isDark, setIsDark }: { isDark: boolean; setIsDark: (v: boolean) => void }) => {
+const Navbar = ({ isDark, setIsDark }: { isDark: boolean; setIsDark: React.Dispatch<React.SetStateAction<boolean>> }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -165,8 +165,9 @@ const Navbar = ({ isDark, setIsDark }: { isDark: boolean; setIsDark: (v: boolean
             </motion.a>
           ))}
           <button 
-            onClick={() => setIsDark(!isDark)}
+            onClick={() => setIsDark(prev => !prev)}
             className="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-teal-500 hover:text-white transition-all"
+            aria-label="Toggle theme"
           >
             {isDark ? <Sun size={18} /> : <Moon size={18} />}
           </button>
@@ -175,8 +176,9 @@ const Navbar = ({ isDark, setIsDark }: { isDark: boolean; setIsDark: (v: boolean
         {/* Mobile Toggle */}
         <div className="md:hidden flex items-center space-x-4">
           <button 
-            onClick={() => setIsDark(!isDark)}
+            onClick={() => setIsDark(prev => !prev)}
             className="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+            aria-label="Toggle theme"
           >
             {isDark ? <Sun size={18} /> : <Moon size={18} />}
           </button>
@@ -247,30 +249,36 @@ const Hero = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="relative flex justify-center"
         >
           <motion.div 
-            animate={{ y: [0, -15, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            animate={{ y: [0, -8, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             className="relative w-64 h-64 md:w-80 md:h-80 group"
           >
-            {/* Animated Glow Background */}
-            <div className="absolute -inset-4 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full blur-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+            {/* Subtle Outer Glow */}
+            <div className="absolute inset-0 bg-teal-500/5 rounded-[2rem] blur-2xl group-hover:bg-teal-500/10 transition-colors duration-500"></div>
             
-            <img 
-              src="https://i.postimg.cc/HWMNpzXG/Gemini-Generated-Image-p5gp37p5gp37p5gp.png" 
-              alt="Tanshika J S" 
-              className="relative w-full h-full object-contain rounded-3xl transition-all duration-500 group-hover:scale-105 group-hover:rotate-2 shadow-xl group-hover:shadow-teal-500/20"
-              referrerPolicy="no-referrer"
-            />
-            
-            {/* Corner Accents */}
-            <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-teal-500 rounded-tl-xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-            <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-teal-500 rounded-br-xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+            {/* Main Image Container */}
+            <div className="relative h-full w-full bg-white dark:bg-slate-900 rounded-[2rem] p-3 shadow-2xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-800 transition-all duration-500 group-hover:border-teal-500/30 group-hover:shadow-teal-500/10">
+              <div className="h-full w-full overflow-hidden rounded-[1.5rem] bg-slate-50 dark:bg-slate-800/50">
+                <img 
+                  src="https://i.postimg.cc/HWMNpzXG/Gemini-Generated-Image-p5gp37p5gp37p5gp.png" 
+                  alt="Tanshika J S" 
+                  className="h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-105"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            </div>
+
+            {/* Minimalist Accents */}
+            <div className="absolute top-0 right-0 -mr-2 -mt-2 w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center text-white shadow-lg scale-0 group-hover:scale-100 transition-transform duration-500 delay-100">
+              <div className="w-2 h-2 bg-white rounded-full animate-ping"></div>
+            </div>
           </motion.div>
           {/* Floating badges */}
           <motion.div 
@@ -731,13 +739,20 @@ const ScrollToTop = () => {
 };
 
 export default function App() {
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(() => {
+    const saved = localStorage.getItem('theme');
+    return saved ? saved === 'dark' : true;
+  });
 
   useEffect(() => {
     if (isDark) {
       document.documentElement.classList.add('dark');
+      document.documentElement.style.colorScheme = 'dark';
+      localStorage.setItem('theme', 'dark');
     } else {
       document.documentElement.classList.remove('dark');
+      document.documentElement.style.colorScheme = 'light';
+      localStorage.setItem('theme', 'light');
     }
   }, [isDark]);
 
