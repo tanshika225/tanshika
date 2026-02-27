@@ -76,7 +76,7 @@ const PROJECTS: Project[] = [
     title: 'Sliding Puzzle',
     description: 'A Flutter-based brain game featuring multiple difficulty levels, move tracking, and smooth offline gameplay.',
     tech: ['Flutter', 'Dart'],
-    image: 'https://images.unsplash.com/photo-1586136194012-35ceaddaf769?auto=format&fit=crop&q=80&w=800&h=600',
+    image: 'https://i.postimg.cc/G2YxJ43T/sliding.jpg',
   }
 ];
 
