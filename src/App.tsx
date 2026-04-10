@@ -82,6 +82,17 @@ const PROJECTS: Project[] = [
 
 const EXPERIENCES: Experience[] = [
   {
+    id: 'exp3',
+    role: 'Web Development Intern',
+    company: 'ApexPlanet Software Pvt. Ltd.',
+    period: 'Feb 11, 2026 – Mar 27, 2026',
+    description: [
+      'Completed a virtual internship focusing on Web Development with HTML, CSS, and JavaScript.',
+      'Gained hands-on experience in building responsive and interactive web components.',
+      'Applied core web technologies to develop practical software solutions.'
+    ]
+  },
+  {
     id: 'exp1',
     role: 'Web Application Development Intern',
     company: 'Robowaves (Unit of Test Yantra Software Solutions)',
