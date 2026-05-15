@@ -583,8 +583,8 @@ const Contact = () => {
 
     try {
       await emailjs.sendForm(
-        'service_1af4bzh',
-        'template_vasciy8',
+        'service_i5xyyrp',
+        'template_e7r13bp',
         formRef.current,
         '210IbNC6Em2RBxpn_'
       );
