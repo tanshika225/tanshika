@@ -240,7 +240,7 @@ const Hero = () => {
           <span className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest uppercase text-teal-600 dark:text-teal-400 bg-teal-50 dark:bg-teal-900/30 rounded-full">
             Welcome to my portfolio
           </span>
-          <h1 className="text-5xl md:text-7xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight">
+          <h1 className="text-5xl md:text-7xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight whitespace-nowrap">
             Hi, I'm <span className="text-teal-500">Tanshika J S</span>
           </h1>
           <p className="text-xl md:text-2xl font-medium text-slate-600 dark:text-slate-400 mb-8">
